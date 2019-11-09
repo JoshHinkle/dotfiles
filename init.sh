@@ -31,6 +31,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 pretty_print "Installing powerlevel10k theme" 
 
 # source this repo zshrc
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/custom/themes/powerlevel10k
 printf "source `pwd`/zshrc.txt" > ~/.zshrc
 
 # backup old stuff
