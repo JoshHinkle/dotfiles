@@ -6,6 +6,10 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'scrooloose/nerdtree'
+Plug 'https://github.com/vim-scripts/indentpython.vim.git'
+Plug 'vim-syntastic/syntastic'
+Plug 'nvie/vim-flake8'
+Plug 'https://github.com/tpope/vim-surround.git'
 call plug#end()
 
 " Settings
@@ -49,3 +53,14 @@ call plug#end()
 	map <leader>n :NERDTreeToggle<CR>
 	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+" Python
+ au BufNewFile,BufRead *.py
+     \ set tabstop=4 |
+     \ set softtabstop=4 |
+     \ set shiftwidth=4 |
+     \ set textwidth=79 |
+     \ set expandtab |
+     \ set autoindent |
+     \ set fileformat=unix
+" let python_highlight_all=1
+ imap <F5> <Esc>:w<CR>:!clear;python %<CR>
