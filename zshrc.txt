@@ -118,3 +118,22 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/U
 
 alias ls="ls -a"
 alias python="python3"
+
+# SoFi functions
+ kssh() {
+     env="dev"
+
+     if [[ $#  -eq 1 ]]; then
+         echo "one"-
+         number="$1"
+     elif [[ $# -eq 2 ]]; then
+         env="$1"
+         number="$2"
+     else
+         echo "bad # of args"
+         exit 1
+     fi
+
+     ssh kraken-$env-$number -tt "sudo su - sofi"
+
+ }
