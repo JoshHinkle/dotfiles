@@ -123,17 +123,20 @@ alias python="python3"
  kssh() {
      env="dev"
 
-     if [[ $#  -eq 1 ]]; then
-         echo "one"-
-         number="$1"
-     elif [[ $# -eq 2 ]]; then
-         env="$1"
-         number="$2"
-     else
-         echo "bad # of args"
-         exit 1
+     if [[ "$1" == *"staging"* ]] then
+        ssh samsung-external-staging-0.sofitest.com -tt "sudo su - sofi"
+     else 
+       if [[ $#  -eq 1 ]]; then
+           echo "one"-
+           number="$1"
+       elif [[ $# -eq 2 ]]; then
+           env="$1"
+           number="$2"
+       else
+           echo "bad # of args"
+           exit 1
+       fi
+       ssh kraken-$env-$number -tt "sudo su - sofi"
      fi
-
-     ssh kraken-$env-$number -tt "sudo su - sofi"
 
  }
