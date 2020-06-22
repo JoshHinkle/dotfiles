@@ -34,6 +34,10 @@ call plug#end()
   set nobackup
   set autoindent
 
+" Switch Tabs
+  nnoremap H gT
+  nnoremap L gt
+
 " Enable autocompletion:
 	set wildmode=longest,list,full
 
