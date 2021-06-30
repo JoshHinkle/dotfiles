@@ -52,3 +52,4 @@ PLUG="curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs \
 echo `$PLUG`
 
 printf "source `pwd`/vimrc.txt" > ~/.vimrc
+git config --global push.default current
