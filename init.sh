@@ -25,6 +25,13 @@ mv ~/.oh-my-zsh ~/.oh-my-zsh.old
 pretty_print "Installing zsh"
 brew install zsh  
 
+# Apps
+brew install --cask intellij-idea
+brew install --cask iterm2
+brew install --cask insomnia
+brew install --cask datagrip
+brew install --cask alfred
+
 pretty_print "Installing oh-my-zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" "" --unattended
 
