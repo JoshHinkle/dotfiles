@@ -59,9 +59,13 @@ git config --global push.default current
 git config --global pull.rebase false
 curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
 unzip awscli-bundle.zip
+ln -s -f /usr/local/bin/python3 /usr/local/bin/python
 sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
 echo "use dummy for these AWS Access Key ID [None]: dummy
 AWS Secret Access Key [None]: dummy
 Default region name [None]: us-west-1
 Default output format [None]:"
 aws configure
+rm -rf awscli-bundle
+rm awscli-bundle.zip
+
