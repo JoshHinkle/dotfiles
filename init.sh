@@ -1,4 +1,4 @@
-#!/bin/bash
+!/bin/bash
 
 pretty_print() {
   printf "\n%b\n" "................ $1 ................ "
@@ -24,6 +24,7 @@ mv ~/.oh-my-zsh ~/.oh-my-zsh.old
 # Install zsh + oh-my-zsh
 pretty_print "Installing zsh"
 brew install zsh  
+brew install python
 
 # Apps
 brew install --cask intellij-idea
@@ -31,6 +32,8 @@ brew install --cask iterm2
 brew install --cask insomnia
 brew install --cask datagrip
 brew install --cask alfred
+brew install --cask visual-studio-code
+brew install --cask docker
 
 pretty_print "Installing oh-my-zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" "" --unattended
@@ -53,3 +56,12 @@ echo `$PLUG`
 
 printf "source `pwd`/vimrc.txt" > ~/.vimrc
 git config --global push.default current
+git config --global pull.rebase false
+curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+unzip awscli-bundle.zip
+sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+echo "use dummy for these AWS Access Key ID [None]: dummy
+AWS Secret Access Key [None]: dummy
+Default region name [None]: us-west-1
+Default output format [None]:"
+aws configure
