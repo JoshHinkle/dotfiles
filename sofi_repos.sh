@@ -1,6 +1,7 @@
 #!/bin/bash
 mkdir -p ~/git
 cd ~/git
+git clone git@gitlab.com:sofiinc/money/debit-card.git
 git clone git@gitlab.com:sofiinc/devops/sofi-kubernetes.git
 git clone git@gitlab.com:sofiinc/money/money-partner-api.git
 git clone git@gitlab.com:sofiinc/money/money-partner-db.git
