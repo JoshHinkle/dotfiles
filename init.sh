@@ -42,7 +42,7 @@ pretty_print "Installing powerlevel10k theme"
 
 # source this repo zshrc
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/custom/themes/powerlevel10k
-printf "source `pwd`/zshrc.txt" > ~/.zshrc
+printf "source `pwd`/zshrc.txt\n" > ~/.zshrc
 
 # backup old stuff
 rm -rf ~/.vim.old
@@ -69,3 +69,13 @@ aws configure
 rm -rf awscli-bundle
 rm awscli-bundle.zip
 
+brew tap AdoptOpenJDK/openjdk
+brew install --cask aAdoptOpenJDK/openjdk/adoptopenjdk
+brew install --cask adoptopenjdk8
+brew install --cask adoptopenjdk11
+brew install --cask adoptopenjdk13
+brew install --cask adoptopenjdk15
+
+# Change screenshots
+mkdir ~/Documents/Screenshots
+defaults write com.apple.screencapture location ~/Documents/Screenshots
