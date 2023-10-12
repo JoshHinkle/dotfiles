@@ -42,7 +42,7 @@ pretty_print "Installing powerlevel10k theme"
 
 # source this repo zshrc
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/custom/themes/powerlevel10k
-printf "source `pwd`/zshrc.txt" > ~/.zshrc
+printf "source `pwd`/zshrc.txt\n" > ~/.zshrc
 
 # backup old stuff
 rm -rf ~/.vim.old
@@ -59,9 +59,23 @@ git config --global push.default current
 git config --global pull.rebase false
 curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
 unzip awscli-bundle.zip
+ln -s -f /usr/local/bin/python3 /usr/local/bin/python
 sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
 echo "use dummy for these AWS Access Key ID [None]: dummy
 AWS Secret Access Key [None]: dummy
 Default region name [None]: us-west-1
 Default output format [None]:"
 aws configure
+rm -rf awscli-bundle
+rm awscli-bundle.zip
+
+brew tap AdoptOpenJDK/openjdk
+brew install --cask aAdoptOpenJDK/openjdk/adoptopenjdk
+brew install --cask adoptopenjdk8
+brew install --cask adoptopenjdk11
+brew install --cask adoptopenjdk13
+brew install --cask adoptopenjdk15
+
+# Change screenshots
+mkdir ~/Documents/Screenshots
+defaults write com.apple.screencapture location ~/Documents/Screenshots
