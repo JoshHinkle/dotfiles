@@ -147,4 +147,54 @@ jdk() {
         java -version
  }
 
-jdk 13
+jdk 21
+
+function ocr () {
+ # local USE_DATE=$(gdate --date="7 day ago" +%Y-%m-%d)
+ local USE_DATE=2022-06-28
+ local CONFLUENCE_KEY="fU3SCSDZcdWIBCHx2un5E6E5"
+ local OPSGENIE_KEY="5ec47d0e-3dc4-43fa-8e27-e52378bcd534"
+ local TEAM_NAME="money_growth"
+ local CURRDIR=$(pwd)
+ local CMDTORUN="python3 ocr.py --start_date $USE_DATE --confluence_key $CONFLUENCE_KEY --opsgenie_key $OPSGENIE_KEY --team $TEAM_NAME"
+
+ cd ~/git/oncallreports
+
+ gecho $CMDTORUN
+
+ cd $CURRDIR
+}
+
+aws_switch () {
+  local OPTIND OKTA_CREDS opt COMP_TIME
+  while getopts ":fh" opt; do
+    case ${opt} in
+      f )
+        OKTA_CREDS=true
+        ;;
+      h )
+        echo "aws_switch [-f] <aws_profile>" && echo "  -f    force OKTA 2FA" && echo && return
+        ;;
+    esac
+  done
+  shift $((OPTIND -1))
+  COMP_TIME=$(gdate -d '120 minutes ago' +%s)
+  CRED_TIME=$(gstat -c %Y ~/.aws/credentials)
+  [[ "${COMP_TIME}" > "${CRED_TIME}" ]] &&  OKTA_CREDS=true
+  [ "$OKTA_CREDS" = true ] && gimme-aws-creds
+  export AWS_PROFILE=$1
+}
+complete -W "$(grep '^\[.*profile' ~/.aws/config | sed -e 's/profile//g' | sed 's/[[:space:]]*//g' | cut -d"[" -f2 | cut -d"]" -f1 | paste -d" " -s -)" aws_switch
+export DBT_USER=jhinkle
+export DBT_ROLE=TDM_MONEY_CONSUMER_PRIVATE_READ_ONLY
+export DBT_DATABASE=TDM_MONEY_CLONE_JHINKLE
+export DBT_WAREHOUSE=TDM_MONEY_CLONE
+export DBT_PROFILES_DIR=/Users/jhinkle/git/tdm-money/dbt
+export DBT_REGION=us-west-2
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:/Applications/IntelliJ IDEA.app/Contents/MacOS:$PATH"
+alias sb="./gradlew spotlessApply && ./gradlew build"
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completio
