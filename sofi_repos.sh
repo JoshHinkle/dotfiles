@@ -1,4 +1,7 @@
 #!/bin/bash
+
+## DON'T USE THIS ANYMORE 
+## USE `create-clone-all.sh` INSTEAD! 
 mkdir -p ~/git
 cd ~/git
 git clone git@gitlab.com:sofiinc/money/debit-card.git
@@ -14,12 +17,13 @@ git clone git@gitlab.com:sofiinc/money/money-snapshot.git
 git clone git@gitlab.com:sofiinc/money/money-users.git
 git clone git@gitlab.com:sofiinc/money/money-comms.git
 git clone git@gitlab.com:sofiinc/money/money-onboarding.git
+git clone git@gitlab.com:sofiinc/money/money-onboarding-engine.git
 git clone git@gitlab.com:sofiinc/money/money-strapi.git
 git clone git@gitlab.com:sofiinc/central-services/cryptography.git
 git clone git@gitlab.com:sofiinc/money/money-onboarding-ui.git
 git clone git@gitlab.com:sofiinc/comm/lib/avro-schemas.git
-git clone git@gitlab.com:sofiinc/kafka-support/kafka-burrow.git
-git clone git@gitlab.com:sofiinc/comm/app/sms-service.git
-git clone git@gitlab.com:sofiinc/kafka-support/kafka-kastle.git
+git clone git@gitlab.com:sofiinc/platform-infra/kafka-support/kafka-kastle.git
+git clone git@gitlab.com:sofiinc/platform-infra/kafka-support/kafka-burrow.git
 git clone git@gitlab.com:sofiinc/money/resilient-kafka-publisher.git
-
+git clone git@gitlab.com:sofiinc/micb/onboarding-orchestrator.git
+git clone git@gitlab.com:sofiinc/account-gateway/account-gateway.git

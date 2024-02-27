@@ -8,7 +8,9 @@ pretty_print "Here we go..."
 # Homebrew installation
 if ! command -v brew &>/dev/null; then
   pretty_print "Installing Homebrew, an OSX package manager, follow the instructions..." 
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/jhinkle/.zprofile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 else
   pretty_print "Homebrew already installed."
 fi
@@ -69,12 +71,12 @@ aws configure
 rm -rf awscli-bundle
 rm awscli-bundle.zip
 
-brew tap AdoptOpenJDK/openjdk
-brew install --cask aAdoptOpenJDK/openjdk/adoptopenjdk
-brew install --cask adoptopenjdk8
-brew install --cask adoptopenjdk11
-brew install --cask adoptopenjdk13
-brew install --cask adoptopenjdk15
+# Install JAVA Versions
+brew install openjdk@8
+brew install openjdk@11
+brew install openjdk@13
+brew install openjdk@17
+brew install openjdk@21
 
 # Change screenshots
 mkdir ~/Documents/Screenshots
